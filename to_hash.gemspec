@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.date = %q{2009-05-10}
   s.description = %q{Use to_hash(...) together with default to_json/to_xml/to_yaml methods to get quick and powerful object serialization.}
   s.email = %q{qoobaa@gmail.com}
-  s.files = ["README.rdoc", "VERSION.yml", "lib/to_hash.rb", "test/to_hash_test.rb"]
+  s.files = ["README.rdoc", "lib/to_hash.rb", "test/to_hash_test.rb"]
   s.homepage = %q{http://github.com/qoobaa/to_hash}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.1}
