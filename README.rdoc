@@ -1,0 +1,13 @@
+= to_hash
+
+Easy and powerful object to hash serialization tool. It may be used together with to_json/to_xml/to_yaml standard methods.
+
+== Usage
+
+hash = employee.to_hash(:firstName => :first_name, :lastName => :last_name, :projects => [:projects, :title])
+=> { :firstName => "John", :lastName => "Doe", :projects => [{ :title => "Project 1" }, { :title => "Project 2" }] }
+{ :employee => hash }.to_json
+
+= License
+
+Copyright (c) 2009 Jakub Kuźma, released under the MIT license
