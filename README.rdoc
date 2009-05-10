@@ -1,12 +1,63 @@
 = to_hash
 
-Easy and powerful object to hash serialization tool. It may be used together with to_json/to_xml/to_yaml standard methods.
+Easy and powerful object to hash serialization tool. It may be used together with to_json/to_xml/to_yaml methods.
 
 == Usage
 
-  hash = employee.to_hash(:firstName => :first_name, :lastName => :last_name, :projects => [:projects, :title])
-  # => { :firstName => "John", :lastName => "Doe", :projects => [{ :title => "Project 1" }, { :title => "Project 2" }] }
-  { :employee => hash }.to_json
+Take a look at the example below:
+
+  class Category < ActiveRecord::Base
+    def name
+      #...
+    end
+  end
+
+  class Comment < ActiveRecord::Base
+    def author_name
+      #...
+    end
+  end
+
+  class Post < ActiveRecord::Base
+    has_one :category
+    has_many :comments
+
+    include ToHash
+
+    def title
+      #...
+    end
+
+    def body
+      #...
+    end
+  end
+
+  # simple serialization
+  Post.first.to_hash(:title, :body)
+  #=> { :title => "Post Title", :body => "Post body" }
+
+  # serialization with key changing
+  Post.first.to_hash(:title => :title, :content => :body)
+  #=> { :title => "Post Title", :content => "Post body" }
+
+  # simple serialization of nested objects
+  Post.first.to_hash(:title, [:category, :name])
+  #=> { :title => "Post Title", :category => { :name => "Category Name" } }
+
+  # serialization of nested objects with key changing
+  Post.first.to_hash(:title, [:category, { :categoryName => :name }])
+  #=> { :title => "Post Title", :category => { :categoryName => "Category Name" } }
+
+  # serialization of nested arrays
+  Post.first.to_hash(:title, [:comments, { :author => :author_name }])
+  #=> { :title => "Post Title", :comments => [{ :author => "John Doe" }, { :author => "Jim Smith" }] }
+
+  # creating JSON
+  Post.first.to_hash(:t => :title, :b => :body).to_json
+  #=> "{\"t\": \"Post Title\", \"b\": \"Post body\"}"
+
+* ToHash module doesn't require the class to inherit from ActiveRecord::Base - it can be used with any other classes as well.
 
 = License
 
