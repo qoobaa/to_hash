@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.files = ["README.rdoc", "VERSION.yml", "lib/to_hash.rb", "test/to_hash_test.rb"]
   s.homepage = %q{http://github.com/qoobaa/to_hash}
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.3}
+  s.rubygems_version = %q{1.3.1}
   s.summary = %q{ToHash module for easy object serialization to JSON, XML, YAML, etc.}
 
   if s.respond_to? :specification_version then
