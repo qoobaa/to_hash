@@ -4,9 +4,9 @@ Easy and powerful object to hash serialization tool. It may be used together wit
 
 == Usage
 
-hash = employee.to_hash(:firstName => :first_name, :lastName => :last_name, :projects => [:projects, :title])
-=> { :firstName => "John", :lastName => "Doe", :projects => [{ :title => "Project 1" }, { :title => "Project 2" }] }
-{ :employee => hash }.to_json
+  hash = employee.to_hash(:firstName => :first_name, :lastName => :last_name, :projects => [:projects, :title])
+  # => { :firstName => "John", :lastName => "Doe", :projects => [{ :title => "Project 1" }, { :title => "Project 2" }] }
+  { :employee => hash }.to_json
 
 = License
 
